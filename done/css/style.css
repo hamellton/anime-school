@@ -170,10 +170,37 @@ h6 {
     background-image: url("../img/BTS_2021_main-banner.gif");
 }
 
+.gif-block-bts {
+    background-image: url("../img/BTS_2021_main-banner.gif");
+}
+
 /*.btn-image {*/
 /*    background-image: url("../img/BTS_2021_button.png");*/
 /*    background-size: auto;*/
 /*}*/
+
+.title-button {
+    width: 70%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 901px) {
+    .text-header {
+        font-size: 32px; 
+        color: white;
+    }
+}
+.btn-header {
+    width: 15%;
+    margin-right: 10% !important;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 50px !important;
+}
 
 @media screen and (max-width: 901px) {
     #hero {
@@ -1449,10 +1476,11 @@ table .more.disabled:hover {
 }
 
 @media screen and (max-width: 901px) {
-    .sessions-table {
+    .row .sessions-table {
         display: none;
     }
 }
+
 
 .accordion .title-block {
     min-height: 8.0rem;
@@ -1547,7 +1575,9 @@ color: white !important;
 
 @media screen and (max-width: 901px) {
     #why {
-        background: linear-gradient(rgba(52, 59, 64, 0.9), rgba(0, 0, 0, 0.6)), url(../img/call-to-action-bg-m.jpg) fixed center;
+        /* background: linear-gradient(rgba(52, 59, 64, 0.9), rgba(0, 0, 0, 0.6)), url(../img/call-to-action-bg-m.jpg) fixed center; */
+        background-image: url(../img/BLOCK_BACKGROUND_BTS_2021.png);
+
         background-size: cover;
         /* background-size: 100%; */
         /* background-repeat: no-repeat; */
@@ -1703,8 +1733,8 @@ color: white !important;
 
 .margin-h4 {
     width: 100%;
-    /* margin-left: 45%; */
-    margin-top: 2%;
+    margin-top: 3% !important;
+    margin-bottom: 1%;
     text-align: center;
 }
 
