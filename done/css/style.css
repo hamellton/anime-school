@@ -2284,3 +2284,18 @@ color: white !important;
         display: none !important;
     }
 }
+
+/*
+ol{
+    list-style: none;
+}
+ol > li{
+    padding-left: 20px;
+    position: relative;
+    margin: 10px;
+}
+ol > li:before{
+    content: '✔';
+    position: absolute; top: 0; left: 0;
+    color: yellow;
+}*/
