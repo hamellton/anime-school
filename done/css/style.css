@@ -1437,7 +1437,7 @@ table .green,
 }
 
 table .card {
-    height: 41vh;
+    /* height: 41vh; */
     max-width: 12rem;
 }
 
