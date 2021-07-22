@@ -1,8 +1,8 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
     // Header fixed and Back to top button
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 100) {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 500) {
             $('.back-to-top').fadeIn('slow');
             $('#header').addClass('header-fixed');
         } else {
@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
             $('#header').removeClass('header-fixed');
         }
     });
-    $('.back-to-top').click(function() {
+    $('.back-to-top').click(function () {
         $('html, body').animate({
             scrollTop: 0
         }, 1500, 'easeInOutExpo');
@@ -42,19 +42,19 @@ jQuery(document).ready(function($) {
         $('body').append('<div id="mobile-body-overly"></div>');
         $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
 
-        $(document).on('click', '.menu-has-children i', function(e) {
+        $(document).on('click', '.menu-has-children i', function (e) {
             $(this).next().toggleClass('menu-item-active');
             $(this).nextAll('ul').eq(0).slideToggle();
             $(this).toggleClass("fa-chevron-up fa-chevron-down");
         });
 
-        $(document).on('click', '#mobile-nav-toggle', function(e) {
+        $(document).on('click', '#mobile-nav-toggle', function (e) {
             $('body').toggleClass('mobile-nav-active');
             $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
             $('#mobile-body-overly').toggle();
         });
 
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             var container = $("#mobile-nav, #mobile-nav-toggle");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 if ($('body').hasClass('mobile-nav-active')) {
@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
     }
 
     // Smoth scroll on page hash links
-    $('a[href*="#"]:not([href="#"])').on('click', function() {
+    $('a[href*="#"]:not([href="#"])').on('click', function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 
             var target = $(this.hash);
@@ -104,7 +104,7 @@ jQuery(document).ready(function($) {
     });
 
     // Portfolio filter
-    $("#portfolio-flters li").click(function() {
+    $("#portfolio-flters li").click(function () {
         $("#portfolio-flters li").removeClass('filter-active');
         $(this).addClass('filter-active');
 
@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
 
         $(".portfolio-item").fadeOut().css('transform', 'scale(0)');
 
-        setTimeout(function() {
+        setTimeout(function () {
             $(selectedFilter).fadeIn(100).css('transform', 'scale(1)');
             $("#portfolio-wrapper").fadeTo(300, 1);
         }, 300);
@@ -127,13 +127,13 @@ jQuery(document).ready(function($) {
 
     // custom code
     //for bootstrap popover
-    $(function() {
+    $(function () {
         $('[data-toggle="popover"]').popover({
             trigger: 'focus'
         })
     });
 
-    $('.nav-tabs a').on('click', function(e) {
+    $('.nav-tabs a').on('click', function (e) {
         e.preventDefault()
         $(this).tab('show')
     })
@@ -168,7 +168,15 @@ jQuery(document).ready(function($) {
     let countTotal = () => {
         let quantity = $("#basket-list li").length;
         let total = 0;
-        if (quantity === 2) { total = 300 } else if (quantity === 3 || quantity === 4) { total = 500 } else if (quantity === 1) { total = 200 } else { total = 0 };
+        if (quantity === 2) {
+            total = 300
+        } else if (quantity === 3 || quantity === 4) {
+            total = 500
+        } else if (quantity === 1) {
+            total = 200
+        } else {
+            total = 0
+        };
         $(".choose-title").show();
         $(".choose-message").hide();
         $(".check-sessions").removeClass('hide-el');
@@ -179,7 +187,7 @@ jQuery(document).ready(function($) {
     let deselectSessions = (title) => {
 
         let cards = $(".title-block span:contains(" + title + ")").closest('.card');
-        cards.each(function(index) {
+        cards.each(function (index) {
             let button = $(this).find('button');
             $(this).removeClass('bg-info text-white');
             $(button).removeClass('btn-danger').addClass('btn-outline-danger');
@@ -246,7 +254,7 @@ jQuery(document).ready(function($) {
         $("#basketempty").removeClass("show");
     };
 
-    $('form#discount').submit(function() {
+    $('form#discount').submit(function () {
         if (!localStorage.getItem('promocodeJune1Applied')) {
             // applyPromocode();
         }
@@ -254,7 +262,7 @@ jQuery(document).ready(function($) {
     })
 
     // events 2020
-    $('.more').click(function(e) {
+    $('.more').click(function (e) {
         // modal
         var details = $(e.target).closest('.card-body').children('.event-details');
         var color = $(details).closest('.card').attr('data-color');
@@ -279,8 +287,8 @@ jQuery(document).ready(function($) {
     });
 
     //button pause youtube
-    $(document).on('click', '#close_vid', function() {
-        jQuery("iframe").each(function() {
+    $(document).on('click', '#close_vid', function () {
+        jQuery("iframe").each(function () {
             jQuery(this)[0].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
         });
     });
@@ -306,21 +314,33 @@ jQuery(document).ready(function($) {
     function getValue() {
         // get type events info
         var typesValues = [];
-        $('#types-events input').each(function() {
-            typesValues.push({ id: this.id, checked: this.checked, attr: this.value });
+        $('#types-events input').each(function () {
+            typesValues.push({
+                id: this.id,
+                checked: this.checked,
+                attr: this.value
+            });
         });
 
         // get classes info
         var classesValues = [];
-        $('#classes-events input').each(function() {
-            classesValues.push({ id: this.id, checked: this.checked, attr: this.value });
+        $('#classes-events input').each(function () {
+            classesValues.push({
+                id: this.id,
+                checked: this.checked,
+                attr: this.value
+            });
         });
 
         // get presenter info (select)
         var presentersSelectValues = [];
-        $('select#presenters option').each(function() {
+        $('select#presenters option').each(function () {
             if (this.value !== '') {
-                presentersSelectValues.push({ id: this.value, checked: this.selected, attr: this.value });
+                presentersSelectValues.push({
+                    id: this.value,
+                    checked: this.selected,
+                    attr: this.value
+                });
             }
         });
 
@@ -336,27 +356,40 @@ jQuery(document).ready(function($) {
 
         var filterTypes = [];
 
-        typesValues.forEach(function(el) {
+        typesValues.forEach(function (el) {
             if (el.checked) {
-                filterTypes.push({ attr: 'type', value: el.attr });
+                filterTypes.push({
+                    attr: 'type',
+                    value: el.attr
+                });
             }
         });
 
-        classesValues.forEach(function(el) {
+        classesValues.forEach(function (el) {
             if (el.checked) {
-                filterTypes.push({ attr: 'classes', value: el.attr });
+                filterTypes.push({
+                    attr: 'classes',
+                    value: el.attr
+                });
             }
         });
 
-        presentersSelectValues.forEach(function(el) {
+        presentersSelectValues.forEach(function (el) {
             if (el.checked) {
-                filterTypes.push({ attr: 'presenter', value: el.attr });
+                filterTypes.push({
+                    attr: 'presenter',
+                    value: el.attr
+                });
             }
 
         });
         var obj = {};
-        filterTypes.forEach(function(el) {
-            if (!obj[el.attr]) { obj[el.attr] = `[data-${el.attr}*='${el.value}']`; } else { obj[el.attr] = `${obj[el.attr]},[data-${el.attr}*='${el.value}']` };
+        filterTypes.forEach(function (el) {
+            if (!obj[el.attr]) {
+                obj[el.attr] = `[data-${el.attr}*='${el.value}']`;
+            } else {
+                obj[el.attr] = `${obj[el.attr]},[data-${el.attr}*='${el.value}']`
+            };
         });
 
         var y = $('.sessions-table .card, #mobile-days .mb-2');
@@ -366,7 +399,7 @@ jQuery(document).ready(function($) {
         }
 
 
-        $(y).each(function() {
+        $(y).each(function () {
             $(this).removeClass('disabled');
             $(this).find('a').removeClass('disabled');
         });
@@ -385,16 +418,15 @@ jQuery(document).ready(function($) {
 
     function changeWeeksMobileView() {
         var weeks = $('#mobile-weeks > .card');
-        weeks.each( function() {
+        weeks.each(function () {
             $(this).children('.card-header').removeClass('bg-secondary');
             $(this).children('.card-header').addClass('bg-info');
-            
+
             $(this).children('.collapse').removeClass('show');
             if ($(this).find('.card button').not('.disabled').length) {
                 $(this).children('.collapse').addClass('show');
                 return false;
-            }
-             else {
+            } else {
                 $(this).children('.card-header').addClass('bg-secondary');
                 $(this).children('.card-header').removeClass('bg-info');
             }
@@ -405,7 +437,7 @@ jQuery(document).ready(function($) {
     function showCollapse() {
         // $('#mobile-weeks .card .card .collapse').addClass('show');
         var days = $('#mobile-weeks .card .card .collapse');
-        days.each(function() {
+        days.each(function () {
             if ($(this).find('.card').not('.disabled').length) {
                 $(this).addClass('show');
                 $(this).siblings('.card-header').find('button span.text-muted').removeClass('text-muted').addClass('text-info');
@@ -419,7 +451,7 @@ jQuery(document).ready(function($) {
 
 
     // add change event listener to filter fields
-    $('#types-events input').change(function() {
+    $('#types-events input').change(function () {
         $('.sessions-table .card, .sessions-table .card a, #mobile-days .mb-2, #mobile-days .mb-2 a, .more').addClass('disabled');
         $('#mobile-weeks .card .card .collapse').removeClass('show');
         $('#mobile-weeks .card .card .collapse').siblings('.card-header').find('button').removeClass('disabled').attr('data-toggle', 'collapse');
@@ -428,7 +460,7 @@ jQuery(document).ready(function($) {
         changeWeeksMobileView();
     });
 
-    $('#classes-events input').change(function() {
+    $('#classes-events input').change(function () {
         $('.sessions-table .card, .sessions-table .card a, #mobile-days .mb-2, #mobile-days .mb-2 a, .more').addClass('disabled');
         $('#mobile-weeks .card .card .collapse').removeClass('show');
         $('#mobile-weeks .card .card .collapse').siblings('.card-header').find('button').removeClass('disabled').attr('data-toggle', 'collapse');
@@ -437,7 +469,7 @@ jQuery(document).ready(function($) {
         changeWeeksMobileView();
     });
 
-    $("select#presenters").change(function() {
+    $("select#presenters").change(function () {
         $('.sessions-table .card, .sessions-table .card a, #mobile-days .mb-2, #mobile-days .mb-2 a, .more').addClass('disabled');
         $('#mobile-weeks .card .card .collapse').removeClass('show');
         $('#mobile-weeks .card .card .collapse').siblings('.card-header').find('button').removeClass('disabled').attr('data-toggle', 'collapse');
@@ -447,7 +479,7 @@ jQuery(document).ready(function($) {
     });
 
     // clear filters button 
-    $('#clear-filter').click(function() {
+    $('#clear-filter').click(function () {
         $('.sessions-table .card, .sessions-table .card a, #mobile-days .mb-2, #mobile-days .mb-2 a, .more').removeClass('disabled');
         $('#types-events input, #classes-events input, select#presenters').prop('checked', false);
         $('select#presenters').val('');
